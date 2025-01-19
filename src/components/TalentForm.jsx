@@ -17,7 +17,7 @@ const handleChange = (e) => {
     });
 };
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.talent) {
@@ -25,15 +25,37 @@ const handleSubmit = (e) => {
       return;
     }
 
-    console.log("Form Data Submitted: ", formData);
+    try {
+        const response = await fetch("https://angelesapi.azurewebsites.net/submit", {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-    setFormData({
-        name:"",
-        age:"",
-        email:"",
-        talent:""
-    });
-};
+        if(response.ok){
+            const result = await response.json();
+            alert("Form is submitted successfully");
+            console.log("API Response:", result);
+            console.log("Form submission was successful");
+
+            //reset the form
+            setFormData({
+                name:"",
+                age:"",
+                email:"",
+                talent:"select your talent"
+            });
+        } else {
+            alert("failed to submit form. Please try again");
+            console.error("API Error:", response.statusText);
+        }
+    } catch (error) {
+        alert("An error occurred while submitting the form. Please try again");
+        console.error("Error:", error);
+    };
+}
 
 return(
     <div className = "form-container">
