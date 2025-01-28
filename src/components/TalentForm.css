@@ -1,34 +1,27 @@
 /* TalentForm.css */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden; /* Prevents scrolling */
+  height: 100vh; /* Full height of the viewport */
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  max-width: 600px;
+  width: 100%; /* Make it responsive */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .form-card {
-  background: #ffffff;
-  padding: 2rem; /* More padding for a bigger box */
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 600px; /* Adjust width as needed */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 20px;
 }
 
 h1 {
@@ -44,51 +37,52 @@ p {
 }
 
 .form-field {
-  margin-bottom: 1.5rem; /* More spacing */
-  width: 100%;
+  margin-bottom: 15px;
 }
 
-.form-field label {
+label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
   color: #333;
 }
 
-.form-field input, 
-.form-field textarea,
-.form-field select {
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
   width: 100%;
-  padding: 1rem; /* Bigger input fields */
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #007bff;
   outline: none;
-  background-color: #fff;
-  color: #333;
 }
 
-textarea {
-  resize: none;
-  height: 150px; /* Adjust textarea size */
-}
-
-.submit-btn {
-  padding: 1rem;
-  border-radius: 8px;
-  width: 100%;
-  cursor: pointer;
-  background-color: #4CAF50;
+button {
+  background-color: #007bff;
   color: white;
   border: none;
-  font-weight: bold;
-  text-align: center;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.submit-btn:hover {
-  background-color: #45a049;
+button:hover {
+  background-color: #0056b3;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
